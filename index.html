@@ -226,7 +226,7 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
 .maison-statement{grid-column:1 / span 10;font-size:var(--t-xl);margin-bottom:clamp(1.5rem,3vw,3rem)}
 .maison-statement .soft{color:var(--on-paper-dim)}
 .maison-a{grid-column:1 / span 7;aspect-ratio:4/3;margin:0}
-.maison-b{grid-column:9 / span 4;aspect-ratio:3/4;max-width:26rem;justify-self:end;width:100%;margin:0}
+.maison-b{grid-column:9 / span 4;aspect-ratio:1/1;max-width:26rem;justify-self:end;width:100%;margin:0}
 .maison-text{grid-column:1 / span 7;margin-top:1.5rem}
 .maison-text p{margin:0}
 .maison-sign{grid-column:9 / span 4;max-width:26rem;justify-self:end;width:100%;margin-top:1.5rem;display:flex;gap:2.5rem;padding-top:1.5rem;border-top:1px solid var(--hair-paper)}
@@ -512,9 +512,9 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
 
       <figure class="maison-b" data-speed="-0.06">
         <div class="ph rv-img" style="height:100%;--d:.15s" data-fallback="Portrait de Gaëlle et Suor Heng">
-          <img data-img="couple" alt="Gaëlle et Suor Heng" style="object-position:30% 50%" loading="lazy" decoding="async" sizes="(max-width:760px) 55vw, 30vw">
+          <img data-img="couple" alt="Gaëlle et Suor Heng" loading="lazy" decoding="async" sizes="(max-width:760px) 55vw, 30vw">
         </div>
-        <figcaption class="caption"><span class="num">Fig. 2</span>Gaëlle et Suor Heng · © L. Letot, CCI Centre-Val de Loire</figcaption>
+        <figcaption class="caption"><span class="num">Fig. 2</span>Gaëlle et Suor Heng</figcaption>
       </figure>
 
       <div class="body-copy maison-text rv">
@@ -657,7 +657,7 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
   <div class="wrap foot-reflect" aria-hidden="true"><div class="foot-mark"><em>Sur le</em>Lac</div></div>
   <div class="wrap foot-bottom caption">
     <span>© <span id="year">2026</span> Restaurant sur le Lac · Châlette-sur-Loing</span>
-    <span>Preview de conception · Photographies : fiche Tourisme Loiret du restaurant · Portrait : Ludovic Letot pour la CCI Centre-Val de Loire</span>
+    <span>Preview de conception · Photographies : fiche Tourisme Loiret du restaurant</span>
   </div>
 </footer>
 
@@ -674,7 +674,7 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
     <li><strong>Avis.</strong> <span>4,1/5 sur environ 700 avis Google, relevé via un agrégateur.</span></li>
     <li><strong>Carte &amp; prix.</strong> <span>Aucun menu officiel publié.</span></li>
     <li><strong>Réservation.</strong> <span>Pas de système en ligne trouvé : téléphone ou e-mail.</span></li>
-    <li><strong>Photos.</strong> <span>Toutes viennent de la fiche officielle Tourisme Loiret, en 1200 px de large au mieux. Le portrait du couple n'existe qu'en 800×600 avec un logo incrusté : il est affiché en petit et recadré. Aucune photo de plat n'a été trouvée.</span></li>
+    <li><strong>Photos.</strong> <span>Toutes viennent de la fiche officielle Tourisme Loiret, en 1200 px de large au mieux. Le portrait du couple a été fourni par le client en 681 px : il est affiché en petit format, et son crédit photo reste à préciser. Aucune photo de plat n'a été trouvée.</span></li>
   </ol>
 </aside>
 
@@ -688,11 +688,11 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
 const IMAGES = {
   /* Photos officielles : fiche Tourisme Loiret du restaurant.
      null = aucune photo du restaurant trouvée, le cadre reste vide.
-     Le portrait du couple ne fait que 800×600 avec un logo incrusté à droite :
-     il est affiché en petit format et recadré (object-position) pour l'exclure. */
+     Le portrait du couple est un fichier local fourni par le client (681 px
+     d'origine, recadré en carré et agrandi ×2) : à garder en petit format. */
   hero:   { src: "https://cdt45.media.tourinsoft.eu/upload/restaurant-sur-le-lac-chalette-terrasse-parasols-vue-lac.jpg", note: "Terrasse, parasols, vue lac" },
   salle:  { src: "https://cdt45.media.tourinsoft.eu/upload/restaurant-sur-le-lac-chalette-salle-tables-vue-lac.jpg", note: "Salle, tables, vue lac" },
-  couple: { src: "https://cdt45.media.tourinsoft.eu/upload/45078-1-GaelleSuorHeng.png", note: "Gaëlle et Suor Heng — Ludovic Letot pour la CCI Centre-Val de Loire" },
+  couple: { src: "assets/img/gaelle-suor-heng.jpg", note: "Gaëlle et Suor Heng — photo fournie par le client, crédit à préciser" },
   lac:    { src: "https://cdt45.media.tourinsoft.eu/upload/restaurant-sur-le-lac-chalette-salle-vue-lac.jpg", note: "Salle, vue lac" },
   g1:     { src: "https://cdt45.media.tourinsoft.eu/upload/restaurant-sur-le-lac-chalette-salle-table-ronde-vue-exterieur.jpg", note: "Table ronde, vue extérieur" },
   g2:     { src: "https://cdt45.media.tourinsoft.eu/upload/restaurant-sur-le-lac-chalette-terrasse-vue-lac.jpg", note: "Terrasse, vue lac" },
