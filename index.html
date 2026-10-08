@@ -167,9 +167,9 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
 .menu-open .drawer{clip-path:inset(0 0 0 0);visibility:visible}
 .drawer ol{list-style:none;margin:0;padding:0;display:grid;gap:.35rem}
 .drawer li{overflow:hidden}
-.drawer a{display:flex;align-items:baseline;gap:1rem;font-family:var(--f-display);font-size:clamp(2.4rem,11vw,3.6rem);line-height:1.12;transform:translateY(105%);transition:transform .8s var(--ease)}
-.drawer a .num{font-size:.9rem;opacity:.5;transform:translateY(-.9em)}
-.menu-open .drawer a{transform:none}
+.drawer li a{display:flex;align-items:baseline;gap:1rem;font-family:var(--f-display);font-size:clamp(2.4rem,11vw,3.6rem);line-height:1.12;transform:translateY(105%);transition:transform .8s var(--ease)}
+.drawer li a .num{font-size:.9rem;opacity:.5;transform:translateY(-.9em)}
+.menu-open .drawer li a{transform:none}
 .menu-open .drawer li:nth-child(1) a{transition-delay:.18s}
 .menu-open .drawer li:nth-child(2) a{transition-delay:.24s}
 .menu-open .drawer li:nth-child(3) a{transition-delay:.30s}
@@ -177,7 +177,7 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
 .menu-open .drawer li:nth-child(5) a{transition-delay:.42s}
 .drawer-foot{display:grid;gap:1.4rem;padding-top:1.5rem;border-top:1px solid var(--hair-ink);opacity:0;transition:opacity .6s var(--ease) .5s}
 .menu-open .drawer-foot{opacity:1}
-.drawer-foot .tel{font-family:var(--f-display);font-size:1.6rem}
+.drawer-foot .tel{font-family:var(--f-display);font-size:1.6rem;width:fit-content}
 
 /* ==========================================================================
    HERO
@@ -298,6 +298,7 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
 .resa-phone{display:grid;gap:1rem;margin-top:clamp(2.5rem,5vw,4rem)}
 .resa-phone .tel{font-family:var(--f-display);font-size:clamp(2.2rem,1.2rem + 3.6vw,4.25rem);line-height:1;letter-spacing:-.02em;font-variant-numeric:lining-nums;user-select:all}
 .resa-phone .row{display:flex;flex-wrap:wrap;gap:1.5rem 2rem;align-items:center}
+.resa-call{display:none}
 .copied{color:var(--lotus)}
 .infos{display:grid;gap:0;border-top:1px solid var(--hair-ink)}
 .info{display:grid;grid-template-columns:7rem 1fr;gap:1rem;padding-block:1.15rem;border-bottom:1px solid var(--hair-ink)}
@@ -362,13 +363,30 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
    RESPONSIVE — mobile (compositions repensées, pas un simple empilement)
    ========================================================================== */
 @media (max-width:760px){
+  a,button{-webkit-tap-highlight-color:transparent}
+  .wrap{padding-inline:max(var(--gut),env(safe-area-inset-left,0px)) max(var(--gut),env(safe-area-inset-right,0px))}
+  .sec-head{gap:.75rem}
+  .sec-head .label{letter-spacing:.16em;white-space:nowrap}
+  .sec-head .rule-end{min-width:0;overflow:hidden;text-overflow:ellipsis}
+  .btn{padding:1rem 1.2rem;gap:.7rem}
+  /* Zone tactile élargie sans déplacer le soulignement */
+  .link::before{content:"";position:absolute;inset:-.6rem -.4rem}
+
+  .nav-in{height:4.5rem}
+  .nav-toggle{min-height:2.75rem}
+  .drawer{overflow-y:auto;gap:2rem;padding-top:calc(5.75rem + env(safe-area-inset-top,0px))}
+
+  .hero::before{background:linear-gradient(180deg,rgba(15,22,21,.6) 0%,rgba(15,22,21,.08) 24%,rgba(15,22,21,.22) 40%,rgba(15,22,21,.84) 66%,var(--ink) 100%)}
   .hero-top{top:calc(5.75rem + env(safe-area-inset-top,0px))}
   .hero-top .wrap .label.right{display:none}
+  .hero-body{padding-top:10.5rem;padding-bottom:calc(1.5rem + env(safe-area-inset-bottom,0px))}
   .hero-title{flex-direction:column;align-items:flex-start;line-height:.82}
   .hero-title .small{font-size:.34em;transform:none;margin:0 0 .12em .05em}
-  .reflect{height:4.2rem}
-  .hero-foot{grid-template-columns:1fr;gap:1.75rem}
-  .hero-actions{justify-content:space-between}
+  .reflect{height:clamp(2.5rem,8svh,4.2rem)}
+  .hero-foot{grid-template-columns:1fr;gap:1.5rem}
+  /* Le bouton prend la largeur disponible ; « Découvrir » passe dessous si la place manque */
+  .hero-actions{flex-wrap:wrap;gap:1.1rem 1.5rem}
+  .hero-actions .btn{flex:1 1 auto;justify-content:space-between}
   .scroll-cue{display:none}
 
   .maison-statement{font-size:clamp(1.9rem,8vw,2.5rem)}
@@ -378,28 +396,67 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
   .maison-b{grid-column:7 / -1;margin-top:-4.5rem;position:relative;z-index:2;box-shadow:0 0 0 .6rem var(--paper)}
   .maison-b figcaption{display:none}
   .maison-a figcaption{max-width:48%}
-  .btn{padding:.95rem 1.2rem;gap:.7rem}
   .maison-text{grid-column:1 / -1;margin-top:.5rem}
   .maison-sign{grid-column:1 / -1;max-width:none;margin-top:0;gap:1.75rem}
 
-  .cuisine-head{grid-template-columns:1fr;gap:2rem}
-  .principles{grid-template-columns:1fr;gap:2rem}
+  .cuisine-head{grid-template-columns:1fr;gap:1.5rem}
+  .principles{grid-template-columns:1fr;gap:0;padding-top:0}
   .principles .principle:last-child{grid-column:auto}
+  .principle{padding-block:1.5rem;gap:.5rem}
+  .principle + .principle{border-top:1px solid var(--hair-ink)}
+  .principle:last-child{padding-bottom:0}
+  .principle p{max-width:none}
 
-  .lac-full{height:60svh}
-  .lac-over .wrap{flex-direction:column;align-items:flex-start}
-  .lac-over .caption{text-align:left}
+  .lac-full{height:max(24rem,60svh)}
+  .lac-full::after{background:linear-gradient(180deg,var(--ink) 0%,rgba(15,22,21,.1) 20%,rgba(15,22,21,.4) 46%,rgba(15,22,21,.92) 100%)}
+  .lac-over{padding-bottom:2rem}
+  .lac-over .wrap{flex-direction:column;align-items:flex-start;gap:1.25rem}
+  .lac-over .caption{text-align:left;color:var(--on-ink)}
+
   .table-grid{grid-template-columns:1fr}
-  .table-intro{position:static}
-  .carte-row{grid-template-columns:1fr auto}
+  .table-intro{position:static;gap:1.5rem}
+  .carte-row{grid-template-columns:1fr auto;padding-block:1.25rem}
   .carte-row .dots{display:none}
-  .offers{grid-template-columns:1fr}
-  .galerie{grid-template-columns:1fr 1fr}
+  .carte-row .val{white-space:nowrap}
+  .offers{grid-template-columns:1fr;gap:2rem}
+  .galerie{grid-template-columns:1fr 1fr;padding-bottom:0}
   .galerie .ph:nth-child(even){transform:none}
+
+  /* Photo de fond : voile uniforme, le texte occupe toute la largeur */
+  .resa::before{background:linear-gradient(180deg,rgba(15,22,21,.9),rgba(15,22,21,.82))}
+  .resa-grid{gap:3rem}
+  .resa-phone{margin-top:2rem}
+  .resa-call{display:inline-flex;justify-content:space-between;margin-top:.5rem}
   .info{grid-template-columns:1fr;gap:.35rem}
-  .foot-top{grid-template-columns:1fr 1fr;row-gap:3rem}
+  .info p{overflow-wrap:anywhere}
+  .hours{gap:.3rem 1rem}
+
+  .foot-top{grid-template-columns:1fr 1fr;row-gap:2.25rem}
+  .foot-top .col{gap:.35rem}
   .foot-top .col:first-child{grid-column:1 / -1}
+  /* Contact passe en dernier, sur toute la largeur : l'adresse ne se casse plus */
+  .foot-top .col:nth-child(3){grid-column:1 / -1;order:1}
+  .foot-top .label{margin-bottom:.4rem}
+  .foot-top a{padding-block:.4rem}
+  .foot-mark{font-size:30vw}
+  .foot-reflect{height:3.25rem}
+  /* Dégagement pour la pastille de preview (à retirer avec elle) */
+  .foot-bottom{padding-bottom:calc(4.75rem + env(safe-area-inset-bottom,0px))}
   .pv-pill span.long{display:none}
+}
+@media (max-width:359px){
+  .sec-head .rule-end{display:none}
+}
+
+/* Écrans tactiles : pas d'état « survol » qui reste collé après un appui */
+@media (hover:none){
+  .btn:hover,.sec--paper .btn:hover{color:inherit}
+  .btn:hover::before{transform:translateY(101%)}
+  .btn:hover .arr{width:1.6rem}
+  .btn:active{opacity:.65}
+  .link:hover::after{transform:none}
+  .nav-links a:hover::after{transform:translateX(-50%) scale(0)}
+  .nav-links a.is-active::after{transform:translateX(-50%) scale(1)}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -447,7 +504,7 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
     <li><a href="#venir"><span class="num">iv.</span>Réserver</a></li>
   </ol>
   <div class="drawer-foot">
-    <span class="tel">02 38 94 75 46</span>
+    <a class="tel" href="tel:+33238947546">02 38 94 75 46</a>
     <span class="caption">3 rue du Gué aux Biches · 45120 Châlette-sur-Loing</span>
   </div>
 </div>
@@ -613,6 +670,7 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
         <div class="resa-phone rv" style="--d:.15s">
           <span class="label" style="color:var(--on-ink-dim)">Les réservations se prennent par téléphone</span>
           <a class="tel" href="tel:+33238947546" id="tel">02 38 94 75 46</a>
+          <a class="btn resa-call" href="tel:+33238947546">Appeler le restaurant <span class="arr" aria-hidden="true"></span></a>
           <div class="row">
             <button class="link" id="copyTel" type="button">Copier le numéro</button>
             <a class="link" href="https://www.facebook.com/suoretgaelle/" target="_blank" rel="noopener">Facebook</a>
@@ -633,7 +691,7 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
             <span data-d="0">Dimanche</span><span data-d="0">12 h – 15 h</span>
           </div>
         </div>
-        <div class="info"><span class="label">E-mail</span><p>restaurantsurlelac@outlook.com</p></div>
+        <div class="info"><span class="label">E-mail</span><p><a href="mailto:restaurantsurlelac@outlook.com">restaurantsurlelac@outlook.com</a></p></div>
         <div class="info"><span class="label">Accès</span><p>Parc de loisirs du lac, parking à proximité. Salle climatisée et accessible en fauteuil roulant.</p></div>
       </div>
     </div>
