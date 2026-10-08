@@ -27,9 +27,9 @@
   --reed:#7E8A7B;       /* roseau, textes secondaires */
   --lotus:#C9A491;      /* lotus fané, unique accent (clin d'œil aux origines du chef) */
   --on-ink:#E8E4DA;
-  --on-ink-dim:rgba(232,228,218,.62);
+  --on-ink-dim:rgba(232,228,218,.72);
   --on-paper:#141B19;
-  --on-paper-dim:rgba(20,27,25,.62);
+  --on-paper-dim:rgba(20,27,25,.72);
   --hair-ink:rgba(232,228,218,.16);
   --hair-paper:rgba(20,27,25,.16);
 
@@ -42,9 +42,9 @@
   --t-sm:.875rem;       /* 14 */
   --t-base:1rem;        /* 16 */
   --t-md:1.1875rem;     /* 19 — chapeau */
+  --t-lede:clamp(1.25rem,1.05rem + .7vw,1.625rem); /* chapeau de section */
   --t-lg:clamp(1.5rem,1.1rem + 1.4vw,2.25rem);
-  --t-xl:clamp(2.25rem,1.4rem + 3.2vw,4.25rem);
-  --t-xxl:clamp(3rem,1.6rem + 6vw,7.5rem);
+  --t-h2:clamp(2.25rem,1.5rem + 3.4vw,4.75rem);    /* tous les titres de section */
   --t-mono:clamp(5.5rem,2rem + 17vw,17rem);
 
   /* Espacements */
@@ -75,10 +75,13 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .label{font-family:var(--f-text);font-size:var(--t-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase}
 .display{font-family:var(--f-display);font-weight:400;letter-spacing:-.015em;line-height:1.06;text-wrap:balance;margin:0}
 .display em{font-style:italic;letter-spacing:-.01em}
-.lede{font-family:var(--f-display);font-size:var(--t-lg);line-height:1.32;font-weight:400;text-wrap:pretty;margin:0}
+h2.display{font-size:var(--t-h2)}
+/* L'italique clôt toujours le titre et ne se coupe jamais en deux lignes */
+h2.display em,.hero-tag em{white-space:nowrap}
+.lede{font-family:var(--f-display);font-size:var(--t-lede);line-height:1.4;font-weight:400;text-wrap:pretty;margin:0}
 .body-copy{max-width:34rem;font-size:var(--t-base);text-wrap:pretty}
 .body-copy p{margin:0 0 1.1em}
-.caption{font-size:var(--t-xs);letter-spacing:.06em;line-height:1.5}
+.caption{font-size:var(--t-sm);letter-spacing:.02em;line-height:1.5}
 .num{font-family:var(--f-display);font-style:italic;font-size:1.05rem;letter-spacing:0;white-space:nowrap}
 
 /* ---------- Mise en page ---------- */
@@ -89,7 +92,6 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .sec-head{display:flex;align-items:baseline;gap:1.25rem;padding-bottom:1.1rem;border-bottom:1px solid var(--hair-ink);margin-bottom:clamp(2rem,4vw,3.5rem)}
 .sec--paper .sec-head{border-color:var(--hair-paper)}
 .sec-head .label{opacity:.7}
-.sec-head .rule-end{margin-left:auto;opacity:.55}
 
 /* ---------- Boutons ---------- */
 .btn{white-space:nowrap;position:relative;display:inline-flex;align-items:center;gap:.9rem;padding:1.05rem 1.6rem;font-size:var(--t-xs);font-weight:500;letter-spacing:.2em;text-transform:uppercase;border:1px solid currentColor;overflow:hidden;isolation:isolate;transition:color .6s var(--ease)}
@@ -114,7 +116,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .ph::after{content:attr(data-fallback);position:absolute;inset:0;display:none;align-items:flex-end;padding:1rem;font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--reed)}
 .ph.is-missing img{opacity:0}
 .ph.is-missing::after{display:flex}
-figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity:.7}
+figcaption{margin-top:.85rem;opacity:.75}
 
 /* Révélations (actives seulement si JS) */
 .js .rv{opacity:0;transform:translateY(28px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease);transition-delay:var(--d,0s)}
@@ -190,9 +192,6 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
   linear-gradient(180deg,rgba(15,22,21,.55) 0%,rgba(15,22,21,0) 26%,rgba(15,22,21,0) 46%,rgba(15,22,21,.72) 78%,var(--ink) 100%)}
 .hero-top{position:absolute;top:calc(7.5rem + env(safe-area-inset-top,0px));left:0;right:0}
-.hero-top .wrap{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem}
-.coord{display:grid;gap:.35rem;color:var(--on-ink-dim)}
-.coord .label{color:var(--on-ink)}
 .hero-body{padding-bottom:clamp(2rem,5vh,3.5rem)}
 .hero-title{position:relative;display:flex;align-items:baseline;flex-wrap:wrap;column-gap:.08em;font-family:var(--f-display);font-weight:400;line-height:.86;margin:0;font-size:var(--t-mono);letter-spacing:-.03em}
 .hero-title .small{font-style:italic;font-size:.3em;letter-spacing:-.01em;line-height:1;transform:translateY(-.15em);margin-right:.25em}
@@ -202,11 +201,10 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
 .reflect{height:clamp(2.4rem,7vw,6.5rem)}
 .mirror{position:absolute;left:0;top:100%;margin-top:calc(.12em + 2px);transform:scaleY(-1);transform-origin:center;opacity:.3;filter:blur(1.2px);pointer-events:none;-webkit-mask-image:linear-gradient(0deg,#000 0%,transparent 55%);mask-image:linear-gradient(0deg,#000 0%,transparent 55%);animation:ripple 9s ease-in-out infinite}
 @keyframes ripple{0%,100%{transform:scaleY(-1) skewX(0deg)}50%{transform:scaleY(-1.03) skewX(-1deg)}}
-.hero-foot{display:grid;grid-template-columns:minmax(0,1.1fr) auto minmax(0,1fr);align-items:end;gap:2rem;margin-top:clamp(.5rem,2vh,1.5rem)}
-.hero-tag{font-family:var(--f-display);font-size:var(--t-md);line-height:1.4;max-width:24rem;margin:0}
+.hero-foot{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:2rem;margin-top:clamp(.5rem,2vh,1.5rem)}
+.hero-tag{font-family:var(--f-display);font-size:var(--t-lede);line-height:1.4;max-width:30rem;margin:0}
 .hero-tag em{color:var(--lotus)}
 .hero-actions{display:flex;gap:1.75rem;align-items:center}
-.hero-hours{justify-self:end;text-align:right;color:var(--on-ink-dim);display:grid;gap:.25rem}
 .scroll-cue{position:absolute;left:50%;bottom:0;width:1px;height:3.5rem;background:linear-gradient(var(--on-ink-dim),transparent);overflow:hidden}
 .scroll-cue::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:var(--on-ink);animation:cue 2.6s var(--ease-io) infinite}
 @keyframes cue{to{top:110%}}
@@ -223,8 +221,8 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
    I. LA MAISON
    ========================================================================== */
 .maison-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gut);align-items:start}
-.maison-statement{grid-column:1 / span 10;font-size:var(--t-xl);margin-bottom:clamp(1.5rem,3vw,3rem)}
-.maison-statement .soft{color:var(--on-paper-dim)}
+.maison-head{grid-column:1 / span 8;display:grid;gap:1.5rem;margin-bottom:clamp(1rem,2vw,2rem)}
+.maison-head .lede{max-width:40rem}
 .maison-a{grid-column:1 / span 7;aspect-ratio:4/3;margin:0}
 .maison-b{grid-column:9 / span 4;aspect-ratio:1/1;max-width:26rem;justify-self:end;width:100%;margin:0}
 .maison-text{grid-column:1 / span 7;margin-top:1.5rem}
@@ -239,13 +237,12 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
    II. LA CUISINE
    ========================================================================== */
 .cuisine-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--gut);align-items:end;margin-bottom:clamp(2.5rem,5vw,4rem)}
-.cuisine-head .display{font-size:var(--t-xxl)}
 .cuisine-head .body-copy{color:var(--on-ink-dim)}
 .cuisine-head .body-copy strong{color:var(--on-ink);font-weight:400}
 .principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gut);border-top:1px solid var(--hair-ink);padding-top:2rem}
 .principle{display:grid;gap:.8rem;align-content:start}
 .principle h3{font-family:var(--f-display);font-weight:400;font-size:1.5rem;line-height:1.2;margin:0}
-.principle p{margin:0;color:var(--on-ink-dim);font-size:.95rem;max-width:22rem}
+.principle p{margin:0;color:var(--on-ink-dim);max-width:22rem}
 
 
 
@@ -256,9 +253,8 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
 .lac-full .ph{position:absolute;inset:-12% 0;height:124%}
 .lac-full::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--ink) 0%,rgba(15,22,21,0) 22%,rgba(15,22,21,0) 55%,rgba(15,22,21,.75) 100%)}
 .lac-over{position:absolute;inset:auto 0 0 0;z-index:2;padding-bottom:clamp(2.5rem,6vw,5rem)}
-.lac-over .display{font-size:var(--t-xxl);max-width:14ch}
-.lac-over .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem}
-.lac-over .caption{color:var(--on-ink-dim);text-align:right}
+.lac-over .wrap{display:grid;gap:1rem}
+.lac-over .display{max-width:16ch}
 /* ==========================================================================
    IV. LES HÔTES
    ========================================================================== */
@@ -267,7 +263,6 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
    ========================================================================== */
 .table-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,7vw,8rem)}
 .table-intro{display:grid;gap:2rem;align-content:start;position:sticky;top:7rem}
-.table-intro .display{font-size:var(--t-xl)}
 .table-intro .body-copy{color:var(--on-paper-dim)}
 .carte{display:grid;gap:0}
 .carte-row{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:1rem;padding-block:1.6rem;border-bottom:1px solid var(--hair-paper)}
@@ -285,7 +280,7 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
 .js .galerie .ph.in:hover img{transform:scale(1.06)}
 .offer{display:grid;gap:.8rem;align-content:start}
 .offer h3{margin:0;font-family:var(--f-display);font-weight:400;font-size:1.5rem}
-.offer p{margin:0;color:var(--on-paper-dim);font-size:.95rem}
+.offer p{margin:0;color:var(--on-paper-dim)}
 /* ==========================================================================
    VI. RÉSERVER / VENIR
    ========================================================================== */
@@ -294,9 +289,9 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
 .resa-bg .ph{width:100%;height:100%}
 .resa::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(15,22,21,.94) 0%,rgba(15,22,21,.82) 45%,rgba(15,22,21,.45) 100%)}
 .resa-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--gut);align-items:end}
-.resa-title{font-size:var(--t-xxl)}
 .resa-phone{display:grid;gap:1rem;margin-top:clamp(2.5rem,5vw,4rem)}
 .resa-phone .tel{font-family:var(--f-display);font-size:clamp(2.2rem,1.2rem + 3.6vw,4.25rem);line-height:1;letter-spacing:-.02em;font-variant-numeric:lining-nums;user-select:all}
+.resa-note{margin:0;color:var(--on-ink-dim)}
 .resa-phone .row{display:flex;flex-wrap:wrap;gap:1.5rem 2rem;align-items:center}
 .resa-call{display:none}
 .copied{color:var(--lotus)}
@@ -306,7 +301,7 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
 .info p{margin:0}
 .info a{border-bottom:1px solid var(--hair-ink);transition:border-color .4s,color .4s}
 .info a:hover{color:var(--lotus);border-color:var(--lotus)}
-.hours{display:grid;grid-template-columns:auto 1fr;gap:.15rem 1.25rem;font-variant-numeric:tabular-nums;font-size:.95rem}
+.hours{display:grid;grid-template-columns:auto 1fr;gap:.15rem 1.25rem;font-variant-numeric:tabular-nums}
 .hours .off{color:var(--on-ink-dim)}
 .hours .today{color:var(--lotus)}
 
@@ -347,9 +342,7 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
   .nav-links{display:none}
   .nav-toggle{display:flex}
   .nav-cta{display:none}
-  .hero-foot{grid-template-columns:1fr auto}
-  .hero-hours{display:none}
-  .maison-statement{grid-column:1 / -1}
+  .maison-head{grid-column:1 / -1}
   .maison-a{grid-column:1 / span 8}
   .maison-b,.maison-sign{grid-column:9 / -1}
   .maison-text{grid-column:1 / span 8}
@@ -367,7 +360,6 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
   .wrap{padding-inline:max(var(--gut),env(safe-area-inset-left,0px)) max(var(--gut),env(safe-area-inset-right,0px))}
   .sec-head{gap:.75rem}
   .sec-head .label{letter-spacing:.16em;white-space:nowrap}
-  .sec-head .rule-end{min-width:0;overflow:hidden;text-overflow:ellipsis}
   .btn{padding:1rem 1.2rem;gap:.7rem}
   /* Zone tactile élargie sans déplacer le soulignement */
   .link::before{content:"";position:absolute;inset:-.6rem -.4rem}
@@ -378,7 +370,6 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
 
   .hero::before{background:linear-gradient(180deg,rgba(15,22,21,.6) 0%,rgba(15,22,21,.08) 24%,rgba(15,22,21,.22) 40%,rgba(15,22,21,.84) 66%,var(--ink) 100%)}
   .hero-top{top:calc(5.75rem + env(safe-area-inset-top,0px))}
-  .hero-top .wrap .label.right{display:none}
   .hero-body{padding-top:10.5rem;padding-bottom:calc(1.5rem + env(safe-area-inset-bottom,0px))}
   .hero-title{flex-direction:column;align-items:flex-start;line-height:.82}
   .hero-title .small{font-size:.34em;transform:none;margin:0 0 .12em .05em}
@@ -389,7 +380,6 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
   .hero-actions .btn{flex:1 1 auto;justify-content:space-between}
   .scroll-cue{display:none}
 
-  .maison-statement{font-size:clamp(1.9rem,8vw,2.5rem)}
   /* Mobile : image pleine largeur bord à bord, la seconde vient chevaucher */
   .maison-a{grid-column:1 / -1;margin-inline:calc(var(--gut) * -1);aspect-ratio:4/3}
   .maison-a figcaption{padding-inline:var(--gut)}
@@ -410,8 +400,6 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
   .lac-full{height:max(24rem,60svh)}
   .lac-full::after{background:linear-gradient(180deg,var(--ink) 0%,rgba(15,22,21,.1) 20%,rgba(15,22,21,.4) 46%,rgba(15,22,21,.92) 100%)}
   .lac-over{padding-bottom:2rem}
-  .lac-over .wrap{flex-direction:column;align-items:flex-start;gap:1.25rem}
-  .lac-over .caption{text-align:left;color:var(--on-ink)}
 
   .table-grid{grid-template-columns:1fr}
   .table-intro{position:static;gap:1.5rem}
@@ -443,9 +431,6 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
   /* Dégagement pour la pastille de preview (à retirer avec elle) */
   .foot-bottom{padding-bottom:calc(4.75rem + env(safe-area-inset-bottom,0px))}
   .pv-pill span.long{display:none}
-}
-@media (max-width:359px){
-  .sec-head .rule-end{display:none}
 }
 
 /* Écrans tactiles : pas d'état « survol » qui reste collé après un appui */
@@ -521,11 +506,7 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
 
   <div class="hero-top">
     <div class="wrap">
-      <div class="coord h-in">
-        <span class="label">Châlette-sur-Loing</span>
-        <span class="caption">Loiret · Gâtinais</span>
-      </div>
-      <span class="label right h-in" style="color:var(--on-ink-dim)">Table française · Fait maison</span>
+      <span class="label h-in">Châlette-sur-Loing · Loiret</span>
     </div>
   </div>
 
@@ -538,14 +519,10 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
       <div class="reflect" aria-hidden="true"></div>
 
       <div class="hero-foot">
-        <p class="hero-tag h-in" style="transition-delay:.45s">Une cuisine française faite maison, servie face à l'eau, <em>à l'heure où le lac se tait.</em></p>
+        <p class="hero-tag h-in" style="transition-delay:.45s">Une cuisine française faite maison, <em>servie face à l'eau.</em></p>
         <div class="hero-actions h-in" style="transition-delay:.6s">
           <a href="#venir" class="btn">Réserver une table <span class="arr" aria-hidden="true"></span></a>
           <a href="#maison" class="link">Découvrir</a>
-        </div>
-        <div class="hero-hours h-in" style="transition-delay:.75s">
-          <span class="label" style="color:var(--on-ink)">Déjeuner</span><span class="caption">du mardi au dimanche</span>
-          <span class="label" style="color:var(--on-ink);margin-top:.6rem">Dîner</span><span class="caption">vendredi et samedi</span>
         </div>
       </div>
     </div>
@@ -555,27 +532,30 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
 <!-- ===================== I. LA MAISON ===================== -->
 <section class="sec sec--paper" id="maison">
   <div class="wrap">
-    <div class="sec-head rv"><span class="num">i.</span><span class="label">La Maison</span><span class="label rule-end">Salles rénovées en 2021</span></div>
+    <div class="sec-head rv"><span class="num">i.</span><span class="label">La Maison</span></div>
 
     <div class="maison-grid">
-      <p class="display maison-statement rv">Après douze années à l'Auberge de Conflans, Gaëlle et Suor Heng ont posé leur table au bord du lac de Châlette. <span class="soft">Trois salles face au lac, une terrasse. Et l'eau, partout.</span></p>
+      <div class="maison-head rv">
+        <h2 class="display">Une table posée <em>au bord du lac.</em></h2>
+        <p class="lede">Après douze années à l'Auberge de Conflans, Gaëlle et Suor Heng ont installé leur restaurant sur la rive du lac de Châlette.</p>
+      </div>
 
       <figure class="maison-a">
         <div class="ph rv-img" style="height:100%" data-fallback="Photographie — la salle et ses baies vitrées">
           <img data-img="salle" alt="La salle du restaurant, tables dressées face au lac" loading="lazy" decoding="async" sizes="(max-width:760px) 100vw, 55vw">
         </div>
-        <figcaption class="caption"><span class="num">Fig. 1</span>La salle et sa vue sur le lac</figcaption>
+        <figcaption class="caption">La salle et sa vue sur le lac</figcaption>
       </figure>
 
       <figure class="maison-b" data-speed="-0.06">
         <div class="ph rv-img" style="height:100%;--d:.15s" data-fallback="Portrait de Gaëlle et Suor Heng">
           <img data-img="couple" alt="Gaëlle et Suor Heng" loading="lazy" decoding="async" sizes="(max-width:760px) 55vw, 30vw">
         </div>
-        <figcaption class="caption"><span class="num">Fig. 2</span>Gaëlle et Suor Heng</figcaption>
+        <figcaption class="caption">Gaëlle et Suor Heng</figcaption>
       </figure>
 
       <div class="body-copy maison-text rv">
-        <p>Un pavillon vitré posé sur la rive, à quelques minutes de Montargis : on vient d'abord pour la vue, on revient pour l'assiette. Gaëlle reçoit en salle, Suor Heng tient la cuisine.</p>
+        <p>Un pavillon vitré à quelques minutes de Montargis : trois salles face au lac et une terrasse. On vient d'abord pour la vue, on revient pour l'assiette.</p>
       </div>
       <div class="maison-sign rv" style="--d:.1s">
         <div><span class="who">Gaëlle</span><span class="caption role">La salle</span></div>
@@ -588,19 +568,19 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
 <!-- ===================== II. LA CUISINE ===================== -->
 <section class="sec" id="cuisine">
   <div class="wrap">
-    <div class="sec-head rv"><span class="num">ii.</span><span class="label">La Cuisine</span><span class="label rule-end">Fait maison</span></div>
+    <div class="sec-head rv"><span class="num">ii.</span><span class="label">La Cuisine</span></div>
 
     <div class="cuisine-head">
-      <h2 class="display rv">Le produit, <em>la saison,</em> le geste.</h2>
+      <h2 class="display rv">Le produit, la saison, <em>le geste.</em></h2>
       <div class="body-copy rv" style="--d:.15s">
         <p>Ici, tout est élaboré sur place à partir de produits bruts. <strong>Suor Heng est Maître Restaurateur</strong>, un titre d'État qui distingue les tables où la cuisine est réellement faite maison.</p>
       </div>
     </div>
 
     <div class="principles">
-      <div class="principle rv"><span class="num">a.</span><h3>Frais &amp; maison</h3><p>Fonds, sauces, desserts : préparés en cuisine, chaque jour, à partir de produits bruts.</p></div>
-      <div class="principle rv" style="--d:.1s"><span class="num">b.</span><h3>Le Gâtinais dans l'assiette</h3><p>Des producteurs des environs, une carte qui change avec leurs récoltes.</p></div>
-      <div class="principle rv" style="--d:.2s"><span class="num">c.</span><h3>Un accent lointain</h3><p>Quelques touches d'Asie du Sud-Est, posées avec retenue sur la tradition française.</p></div>
+      <div class="principle rv"><h3>Frais &amp; maison</h3><p>Fonds, sauces, desserts : préparés en cuisine, chaque jour, à partir de produits bruts.</p></div>
+      <div class="principle rv" style="--d:.1s"><h3>Le Gâtinais dans l'assiette</h3><p>Des producteurs des environs, une carte qui change avec leurs récoltes.</p></div>
+      <div class="principle rv" style="--d:.2s"><h3>Un accent lointain</h3><p>Quelques touches d'Asie du Sud-Est, posées avec retenue sur la tradition française.</p></div>
     </div>
   </div>
 
@@ -614,8 +594,8 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
     </figure>
     <div class="lac-over">
       <div class="wrap">
-        <h2 class="display rv"><em>Les baies</em> s'ouvrent sur l'eau.</h2>
-        <span class="caption rv" style="--d:.2s">3 salles · 121 couverts<br>60 couverts en terrasse</span>
+        <h2 class="display rv">Les baies s'ouvrent <em>sur l'eau.</em></h2>
+        <span class="caption rv" style="--d:.2s">3 salles · 121 couverts · 60 en terrasse</span>
       </div>
     </div>
   </div>
@@ -625,10 +605,10 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
 <!-- ===================== III. LA TABLE ===================== -->
 <section class="sec sec--paper" id="table">
   <div class="wrap">
-    <div class="sec-head rv"><span class="num">iii.</span><span class="label">La Table</span><span class="label rule-end">Services &amp; carte</span></div>
+    <div class="sec-head rv"><span class="num">iii.</span><span class="label">La Table</span></div>
     <div class="table-grid">
       <div class="table-intro">
-        <h2 class="display rv">Deux services, <em>une carte</em> qui suit les saisons.</h2>
+        <h2 class="display rv">Deux services, une carte <em>de saison.</em></h2>
         <div class="body-copy rv" style="--d:.1s">
           <p>La carte évolue au rythme des producteurs : poisson du jour, pièce de bœuf, desserts maison, et des propositions végétariennes. Elle est communiquée sur place et par téléphone.</p>
         </div>
@@ -642,8 +622,8 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
           <div class="carte-row closed rv"><span class="k">Lundi<em>Jour de repos</em></span><span class="dots"></span><span class="val"><span>Fermé</span></span></div>
         </div>
         <div class="offers">
-          <div class="offer rv"><span class="num">—</span><h3>Groupes &amp; séminaires</h3><p>Deux salles de réunion, banquets et séminaires, de 30 à 121 convives. Parking autocar à proximité.</p></div>
-          <div class="offer rv" style="--d:.1s"><span class="num">—</span><h3>Traiteur &amp; à emporter</h3><p>La cuisine de la maison, à recevoir chez soi. Sur demande, par téléphone.</p></div>
+          <div class="offer rv"><h3>Groupes &amp; séminaires</h3><p>Deux salles de réunion, banquets et séminaires, de 30 à 121 convives. Parking autocar à proximité.</p></div>
+          <div class="offer rv" style="--d:.1s"><h3>Traiteur &amp; à emporter</h3><p>La cuisine de la maison, à recevoir chez soi. Sur demande, par téléphone.</p></div>
         </div>
       </div>
     </div>
@@ -663,12 +643,12 @@ figcaption{display:flex;gap:.8rem;align-items:baseline;margin-top:.85rem;opacity
     <figure class="ph" data-fallback=""><img data-img="resa" alt="" loading="lazy" decoding="async" sizes="100vw"></figure>
   </div>
   <div class="wrap">
-    <div class="sec-head rv"><span class="num">iv.</span><span class="label">Réserver</span><span class="label rule-end">Par téléphone</span></div>
+    <div class="sec-head rv"><span class="num">iv.</span><span class="label">Réserver</span></div>
     <div class="resa-grid">
       <div>
         <h2 class="display resa-title rv">Une table <em>face à l'eau.</em></h2>
         <div class="resa-phone rv" style="--d:.15s">
-          <span class="label" style="color:var(--on-ink-dim)">Les réservations se prennent par téléphone</span>
+          <p class="resa-note">Les réservations se prennent par téléphone.</p>
           <a class="tel" href="tel:+33238947546" id="tel">02 38 94 75 46</a>
           <a class="btn resa-call" href="tel:+33238947546">Appeler le restaurant <span class="arr" aria-hidden="true"></span></a>
           <div class="row">
