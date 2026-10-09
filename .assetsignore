@@ -1,0 +1,9 @@
+# Fichiers du dépôt à ne pas publier avec le site
+.git
+.gitignore
+.assetsignore
+.wrangler
+.claude
+CLAUDE.md
+wrangler.jsonc
+node_modules
