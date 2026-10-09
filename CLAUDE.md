@@ -49,4 +49,6 @@ Ils sont listés dans le panneau « Notes de preview » (pastille en bas à gauc
 
 - Plats et prix : date de la carte photographiée inconnue.
 - Horaires : la carte dit « du mardi au dimanche, midi et soir » ; le site n'annonce le dîner que le vendredi et le samedi.
+- Vendredis à thème : fréquence, thèmes et tarif inconnus (le site dit seulement « Programme par téléphone »).
+- Le restaurant ne fait pas traiteur et la salle n'est pas climatisée : ne pas le réécrire.
 - Droits des photos de plats prises par des clients, et crédit du portrait du couple.
