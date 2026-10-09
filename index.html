@@ -303,6 +303,29 @@ figcaption{margin-top:.85rem;opacity:.75}
 .hours .today{color:var(--orange)}
 
 /* ==========================================================================
+   PLAN D'ACCÈS (Leaflet + tuiles OpenStreetMap, teintées aux couleurs du site)
+   ========================================================================== */
+.plan{position:relative;height:clamp(26rem,68vh,38rem);background:var(--deep);border-top:1px solid var(--hair-ink);overflow:hidden;isolation:isolate}
+.plan-map{position:absolute;inset:0;z-index:0}
+.plan-map.leaflet-container{background:var(--deep);font-family:var(--f-text)}
+/* Carte claire inversée, teintes conservées : fond sombre, lac bleu nuit, noms en clair */
+.plan .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) saturate(.55) brightness(.82) contrast(.95)}
+.plan-over{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;padding-bottom:var(--gut);pointer-events:none}
+.plan-card{pointer-events:auto;display:grid;gap:.7rem;max-width:23rem;padding:1.6rem 1.75rem;background:rgba(15,22,21,.88);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border:1px solid var(--hair-ink)}
+.plan-card .label{color:var(--orange)}
+.plan-card .name{font-family:var(--f-display);font-size:1.5rem;line-height:1.15}
+.plan-card p{margin:0;color:var(--on-ink-dim)}
+.plan-card .link{width:fit-content;margin-top:.3rem}
+.plan-pin{border-radius:50%;background:var(--orange);box-shadow:0 0 0 2px var(--ink)}
+.plan-pin::after{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid var(--orange);animation:pin 2.8s var(--ease) infinite}
+@keyframes pin{from{transform:scale(1);opacity:.9}to{transform:scale(4.2);opacity:0}}
+.plan .leaflet-control-zoom.leaflet-bar{border:1px solid var(--hair-ink);border-radius:0;box-shadow:none;margin:0 var(--gut) var(--gut) 0}
+.plan .leaflet-control-zoom.leaflet-bar a{width:2.5rem;height:2.5rem;line-height:2.5rem;background:rgba(15,22,21,.88);color:var(--on-ink);border-color:var(--hair-ink);border-radius:0;font-weight:400;transition:color .3s,background .3s}
+.plan .leaflet-control-zoom.leaflet-bar a:hover{background:var(--ink);color:var(--orange)}
+.plan-map.leaflet-container .leaflet-control-attribution{background:rgba(15,22,21,.7);color:var(--on-ink-dim);font-size:.625rem;padding:.1rem .5rem}
+.plan-map.leaflet-container .leaflet-control-attribution a{color:inherit}
+
+/* ==========================================================================
    FOOTER
    ========================================================================== */
 .foot{padding-top:clamp(3rem,6vw,5rem);background:var(--ink);overflow:hidden}
@@ -405,6 +428,13 @@ figcaption{margin-top:.85rem;opacity:.75}
   .info{grid-template-columns:1fr;gap:.35rem}
   .info p{overflow-wrap:anywhere}
   .hours{gap:.3rem 1rem}
+
+  /* Mobile : la carte en bandeau, la fiche d'adresse dessous (jamais sur le repère) */
+  .plan{height:auto}
+  .plan-map{position:relative;height:min(22rem,58svh)}
+  .plan-over{position:static;padding-block:1.75rem .5rem}
+  .plan-card{max-width:none;width:100%;padding:0;background:none;border:0;backdrop-filter:none;-webkit-backdrop-filter:none}
+  .plan .leaflet-control-zoom.leaflet-bar{margin:0 1rem 1rem 0}
 
   .foot-top{grid-template-columns:1fr 1fr;row-gap:2.25rem}
   .foot-top .col{gap:.35rem}
@@ -689,6 +719,21 @@ figcaption{margin-top:.85rem;opacity:.75}
   </div>
 </section>
 
+<!-- ===================== PLAN D'ACCÈS ===================== -->
+<section class="plan" id="plan" aria-label="Plan d'accès">
+  <div class="plan-map" id="map"></div>
+  <div class="plan-over">
+    <div class="wrap">
+      <div class="plan-card">
+        <span class="label">Nous situer</span>
+        <span class="name">Restaurant sur le Lac</span>
+        <p>3 rue du Gué aux Biches<br>45120 Châlette-sur-Loing</p>
+        <a class="link" href="https://www.google.com/maps/dir/?api=1&destination=Restaurant%20sur%20le%20Lac%203%20Rue%20du%20Gu%C3%A9%20aux%20Biches%2045120%20Ch%C3%A2lette-sur-Loing" target="_blank" rel="noopener">Itinéraire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <!-- ===================== FOOTER ===================== -->
@@ -865,6 +910,26 @@ const IMAGES = {
     requestAnimationFrame(() => { onNav(); parallax(); ticking = false; });
   }, { passive: true });
   onNav(); parallax();
+
+  /* ---- Plan d'accès : Leaflet n'est chargé qu'à l'approche de la section ---- */
+  const PLACE = [48.024015, 2.727421]; /* position du restaurant relevée sur OpenStreetMap */
+  const LEAFLET = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/';
+  const mapEl = document.getElementById('map');
+  const initMap = () => {
+    const map = L.map(mapEl, { center: PLACE, zoom: 15, zoomControl: false, scrollWheelZoom: false, dragging: !L.Browser.mobile });
+    map.attributionControl.setPrefix(false);
+    L.control.zoom({ position: 'bottomright', zoomInTitle: 'Zoomer', zoomOutTitle: 'Dézoomer' }).addTo(map);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>' }).addTo(map);
+    L.marker(PLACE, { icon: L.divIcon({ className: 'plan-pin', iconSize: [14, 14] }), title: 'Restaurant sur le Lac', keyboard: false }).addTo(map);
+  };
+  const mapIO = new IntersectionObserver(es => {
+    if (!es.some(e => e.isIntersecting)) return;
+    mapIO.disconnect();
+    const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = LEAFLET + 'leaflet.min.css';
+    const js = document.createElement('script'); js.src = LEAFLET + 'leaflet.min.js'; js.onload = initMap;
+    document.head.append(css, js);
+  }, { rootMargin: '100% 0px 100% 0px' });
+  mapIO.observe(mapEl);
 
   /* ---- Copier le numéro ---- */
   const copyBtn = document.getElementById('copyTel');
