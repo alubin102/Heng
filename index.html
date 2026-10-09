@@ -237,7 +237,7 @@ figcaption{margin-top:.85rem;opacity:.75}
 .cuisine-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--gut);align-items:end;margin-bottom:clamp(2.5rem,5vw,4rem)}
 .cuisine-head .body-copy{color:var(--on-ink-dim)}
 .cuisine-head .body-copy strong{color:var(--on-ink);font-weight:400}
-.plats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.5rem,1.2vw,1rem)}
+.plats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.5rem,1.2vw,1rem)}
 .plats .ph{aspect-ratio:4/5}
 .plats .ph img{filter:saturate(.94) contrast(1.03)}
 .js .plats .ph.in:hover img{transform:scale(1.05)}
@@ -593,9 +593,7 @@ figcaption{margin-top:.85rem;opacity:.75}
       <div class="ph rv-img" data-fallback="Photographie — assiette"><img data-img="p1" alt="Saumon et agrumes, tuile au sésame noir" loading="lazy" decoding="async" sizes="(max-width:760px) 50vw, 33vw"></div>
       <div class="ph rv-img" style="--d:.1s" data-fallback="Photographie — assiette"><img data-img="p2" alt="Crustacés, sauce corail et asperge verte" loading="lazy" decoding="async" sizes="(max-width:760px) 50vw, 33vw"></div>
       <div class="ph rv-img" style="--d:.2s" data-fallback="Photographie — assiette"><img data-img="p3" alt="Dos de cabillaud rôti et légumes des producteurs locaux" loading="lazy" decoding="async" sizes="(max-width:760px) 50vw, 33vw"></div>
-      <div class="ph rv-img" data-fallback="Photographie — assiette"><img data-img="p4" alt="Pièce de bœuf, jus réduit et purée" loading="lazy" decoding="async" sizes="(max-width:760px) 50vw, 33vw"></div>
-      <div class="ph rv-img" style="--d:.1s" data-fallback="Photographie — assiette"><img data-img="p5" alt="Saumon mi-cuit, coulis d'herbes" loading="lazy" decoding="async" sizes="(max-width:760px) 50vw, 33vw"></div>
-      <div class="ph rv-img" style="--d:.2s" data-fallback="Photographie — dessert"><img data-img="p6" alt="Entremets aux fruits rouges" loading="lazy" decoding="async" sizes="(max-width:760px) 50vw, 33vw"></div>
+      <div class="ph rv-img" style="--d:.3s" data-fallback="Photographie — assiette"><img data-img="p4" alt="Pièce de bœuf, jus réduit et purée" loading="lazy" decoding="async" sizes="(max-width:760px) 50vw, 25vw"></div>
     </div>
   </div>
 
@@ -769,7 +767,7 @@ figcaption{margin-top:.85rem;opacity:.75}
     <li><strong>Carte &amp; prix.</strong> <span>Menu à 52 € et menu végétarien à 34 € repris de la carte photographiée en salle, fournie par le client. Date du cliché inconnue : plats et prix à confirmer.</span></li>
     <li><strong>Horaires.</strong> <span>La carte indique « du mardi au dimanche, midi et soir, et jours fériés » ; le site n'annonce le dîner que le vendredi et le samedi. À trancher.</span></li>
     <li><strong>Réservation.</strong> <span>Pas de système en ligne trouvé : téléphone ou e-mail.</span></li>
-    <li><strong>Photos.</strong> <span>Toutes viennent de la fiche officielle Tourisme Loiret, en 1200 px de large au mieux. Le portrait du couple a été fourni par le client en 681 px : il est affiché en petit format, et son crédit photo reste à préciser. Les six photos de plats viennent de la page TripAdvisor du restaurant : cinq sont des photos de clients, dont les droits restent à obtenir (ou à remplacer par des photos de la maison).</span></li>
+    <li><strong>Photos.</strong> <span>Toutes viennent de la fiche officielle Tourisme Loiret, en 1200 px de large au mieux. Le portrait du couple a été fourni par le client en 681 px : il est affiché en petit format, et son crédit photo reste à préciser. Les quatre photos de plats viennent de la page TripAdvisor du restaurant : ce sont des photos de clients, dont les droits restent à obtenir (ou à remplacer par des photos de la maison).</span></li>
   </ol>
 </aside>
 
@@ -794,14 +792,11 @@ const IMAGES = {
   g3:     { src: "https://cdt45.media.tourinsoft.eu/upload/restaurant-sur-le-lac-chalette-salle.jpg", note: "Salle" },
   g4:     { src: "https://cdt45.media.tourinsoft.eu/upload/restaurant-sur-le-lac-chalette-salle-groupe-vue-lac.jpg", note: "Salle groupes, vue lac" },
   /* Plats : page TripAdvisor du restaurant, copiés en local (1200 px).
-     p6 est une photo de la maison ; p1 à p5 sont des photos de clients, droits à obtenir. */
+     Ce sont des photos de clients : droits à obtenir. */
   p1:     { src: "assets/img/plats/saumon-agrumes.jpg", note: "Saumon et agrumes — photo client TripAdvisor" },
   p2:     { src: "assets/img/plats/crustaces.jpg", note: "Crustacés — photo client TripAdvisor" },
   p3:     { src: "assets/img/plats/cabillaud.jpg", note: "Dos de cabillaud rôti — photo client TripAdvisor" },
-  p4:     { src: "assets/img/plats/boeuf.jpg", note: "Pièce de bœuf — photo client TripAdvisor" },
-  p5:     { src: "assets/img/plats/saumon-mi-cuit.jpg", note: "Saumon mi-cuit — photo client TripAdvisor" },
-  p6:     { src: "assets/img/plats/entremet-fruits-rouges.jpg", note: "Entremets aux fruits rouges — photo de la maison sur TripAdvisor" },
-  resa:   { src: "https://cdt45.media.tourinsoft.eu/upload/restaurant-sur-le-lac-chalette-terrasse-parasols-vue-lac.jpg", note: "Terrasse, parasols, vue lac" }
+  p4:     { src: "assets/img/plats/boeuf.jpg", note: "Pièce de bœuf — photo client TripAdvisor" },  resa:   { src: "https://cdt45.media.tourinsoft.eu/upload/restaurant-sur-le-lac-chalette-terrasse-parasols-vue-lac.jpg", note: "Terrasse, parasols, vue lac" }
 };
 
 (function(){

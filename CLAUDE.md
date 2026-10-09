@@ -29,7 +29,7 @@ Site d'une page pour le restaurant de Gaëlle et Suor Heng, à Châlette-sur-Loi
 Toutes les images passent par l'objet `IMAGES` dans le JS : une clé par `data-img`. Pour changer une photo, modifier `src` à cet endroit seulement.
 
 - Salle, terrasse, lac : fiche Tourisme Loiret du restaurant, chargées à distance.
-- Plats (`p1` à `p6`) : page TripAdvisor du restaurant, copiées dans `assets/img/plats/` en 1200 px. `p6` est une photo de la maison ; `p1` à `p5` sont des photos de clients.
+- Plats (`p1` à `p4`) : page TripAdvisor du restaurant, copiées dans `assets/img/plats/` en 1200 px. Ce sont des photos de clients.
 
 ## La carte
 
