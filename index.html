@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Sur le Lac — Châlette-sur-Loing</title>
+<title>Restaurant sur le Lac — Châlette-sur-Loing</title>
 <meta name="description" content="Restaurant sur le Lac, table française faite maison au bord du lac de Châlette-sur-Loing (Loiret). Gaëlle et Suor Heng vous reçoivent face à l'eau.">
 <meta name="theme-color" content="#0F1615">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,10 +13,11 @@
 
 <style>
 /* ==========================================================================
-   SUR LE LAC — Direction artistique « Eau dormante »
+   RESTAURANT SUR LE LAC — Direction artistique « Eau dormante »
    Concept : la ligne d'eau. Le site alterne la nuit du lac (encre verte)
    et la lumière du jour sur le lin (papier). Une seule audace : le nom
-   posé sur la ligne d'eau, avec son reflet.
+   posé sur la ligne d'eau, avec son reflet. Un seul accent : l'orange
+   brûlé, en touches fines (numéros, prix, « ou », survols).
    ========================================================================== */
 :root{
   /* Couleurs */
@@ -25,7 +26,7 @@
   --paper:#E8E4DA;      /* lin clair, sections de jour */
   --paper-2:#DCD6C8;    /* lin ombré */
   --reed:#7E8A7B;       /* roseau, textes secondaires */
-  --lotus:#C9A491;      /* lotus fané, unique accent (clin d'œil aux origines du chef) */
+  --orange:#D4894F;     /* orange brûlé, unique accent — version sombre sur papier (.sec--paper) */
   --on-ink:#E8E4DA;
   --on-ink-dim:rgba(232,228,218,.72);
   --on-paper:#141B19;
@@ -66,8 +67,8 @@ body{margin:0;background:var(--ink);color:var(--on-ink);font-family:var(--f-text
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
-::selection{background:var(--lotus);color:var(--ink)}
-:focus-visible{outline:1px solid var(--lotus);outline-offset:4px}
+::selection{background:var(--orange);color:var(--ink)}
+:focus-visible{outline:1px solid var(--orange);outline-offset:4px}
 [hidden]{display:none!important}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
@@ -87,11 +88,12 @@ h2.display em,.hero-tag em{white-space:nowrap}
 /* ---------- Mise en page ---------- */
 .wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--gut)}
 .sec{padding-block:var(--sec);position:relative}
-.sec--paper{background:var(--paper);color:var(--on-paper)}
+.sec--paper{--orange:#A8551F;background:var(--paper);color:var(--on-paper)}
 .sec--paper ::selection{background:var(--on-paper);color:var(--paper)}
 .sec-head{display:flex;align-items:baseline;gap:1.25rem;padding-bottom:1.1rem;border-bottom:1px solid var(--hair-ink);margin-bottom:clamp(2rem,4vw,3.5rem)}
 .sec--paper .sec-head{border-color:var(--hair-paper)}
 .sec-head .label{opacity:.7}
+.sec-head .num{color:var(--orange)}
 
 /* ---------- Boutons ---------- */
 .btn{white-space:nowrap;position:relative;display:inline-flex;align-items:center;gap:.9rem;padding:1.05rem 1.6rem;font-size:var(--t-xs);font-weight:500;letter-spacing:.2em;text-transform:uppercase;border:1px solid currentColor;overflow:hidden;isolation:isolate;transition:color .6s var(--ease)}
@@ -107,7 +109,7 @@ h2.display em,.hero-tag em{white-space:nowrap}
 .link{position:relative;display:inline-flex;align-items:center;gap:.7rem;font-size:var(--t-xs);font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding-block:.4rem}
 .link::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform-origin:right;transition:transform .7s var(--ease)}
 .link:hover::after{transform:scaleX(0)}
-.link:hover{color:var(--lotus)}
+.link:hover{color:var(--orange)}
 
 /* ---------- Images ---------- */
 .ph{position:relative;overflow:hidden;background:var(--deep);margin:0}
@@ -135,7 +137,7 @@ figcaption{margin-top:.85rem;opacity:.75}
 .intro.done{opacity:0;visibility:hidden}
 .intro-mark{display:grid;justify-items:center;gap:1.1rem}
 .intro-word{font-family:var(--f-display);font-size:clamp(1.6rem,4vw,2.4rem);font-style:italic;opacity:0;animation:fadeUp 1s var(--ease) .15s forwards}
-.intro-line{width:min(52vw,22rem);height:1px;background:var(--on-ink-dim);transform:scaleX(0);animation:line 1.1s var(--ease-io) .35s forwards}
+.intro-line{width:min(52vw,22rem);height:1px;background:var(--orange);transform:scaleX(0);animation:line 1.1s var(--ease-io) .35s forwards}
 .intro-sub{opacity:0;animation:fadeUp 1s var(--ease) .6s forwards;color:var(--on-ink-dim)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @keyframes line{to{transform:scaleX(1)}}
@@ -152,7 +154,7 @@ figcaption{margin-top:.85rem;opacity:.75}
 .brand em{font-style:italic;font-size:.82em;margin-right:.18em;opacity:.85}
 .nav-links{display:flex;gap:clamp(1.25rem,2.6vw,2.75rem);list-style:none;margin:0;padding:0}
 .nav-links a{position:relative;font-size:var(--t-xs);font-weight:500;letter-spacing:.2em;text-transform:uppercase;opacity:.82;transition:opacity .4s}
-.nav-links a::after{content:"";position:absolute;left:50%;bottom:-.55rem;width:3px;height:3px;border-radius:50%;background:var(--lotus);transform:translateX(-50%) scale(0);transition:transform .5s var(--ease)}
+.nav-links a::after{content:"";position:absolute;left:50%;bottom:-.55rem;width:3px;height:3px;border-radius:50%;background:var(--orange);transform:translateX(-50%) scale(0);transition:transform .5s var(--ease)}
 .nav-links a:hover,.nav-links a.is-active{opacity:1}
 .nav-links a:hover::after,.nav-links a.is-active::after{transform:translateX(-50%) scale(1)}
 .nav-cta{padding:.8rem 1.25rem}
@@ -203,7 +205,7 @@ figcaption{margin-top:.85rem;opacity:.75}
 @keyframes ripple{0%,100%{transform:scaleY(-1) skewX(0deg)}50%{transform:scaleY(-1.03) skewX(-1deg)}}
 .hero-foot{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:2rem;margin-top:clamp(.5rem,2vh,1.5rem)}
 .hero-tag{font-family:var(--f-display);font-size:var(--t-lede);line-height:1.4;max-width:30rem;margin:0}
-.hero-tag em{color:var(--lotus)}
+.hero-tag em{color:var(--orange)}
 .hero-actions{display:flex;gap:1.75rem;align-items:center}
 .scroll-cue{position:absolute;left:50%;bottom:0;width:1px;height:3.5rem;background:linear-gradient(var(--on-ink-dim),transparent);overflow:hidden}
 .scroll-cue::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:var(--on-ink);animation:cue 2.6s var(--ease-io) infinite}
@@ -225,8 +227,6 @@ figcaption{margin-top:.85rem;opacity:.75}
 .maison-head .lede{max-width:40rem}
 .maison-a{grid-column:1 / span 7;aspect-ratio:4/3;margin:0}
 .maison-b{grid-column:9 / span 4;aspect-ratio:1/1;max-width:26rem;justify-self:end;width:100%;margin:0}
-.maison-text{grid-column:1 / span 7;margin-top:1.5rem}
-.maison-text p{margin:0}
 .maison-sign{grid-column:9 / span 4;max-width:26rem;justify-self:end;width:100%;margin-top:1.5rem;display:flex;gap:2.5rem;padding-top:1.5rem;border-top:1px solid var(--hair-paper)}
 .maison-sign div{display:grid;gap:.2rem}
 .maison-sign .who{font-family:var(--f-display);font-size:1.25rem;font-style:italic}
@@ -239,11 +239,10 @@ figcaption{margin-top:.85rem;opacity:.75}
 .cuisine-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--gut);align-items:end;margin-bottom:clamp(2.5rem,5vw,4rem)}
 .cuisine-head .body-copy{color:var(--on-ink-dim)}
 .cuisine-head .body-copy strong{color:var(--on-ink);font-weight:400}
-.principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gut);border-top:1px solid var(--hair-ink);padding-top:2rem}
-.principle{display:grid;gap:.8rem;align-content:start}
-.principle h3{font-family:var(--f-display);font-weight:400;font-size:1.5rem;line-height:1.2;margin:0}
-.principle p{margin:0;color:var(--on-ink-dim);max-width:22rem}
-
+.plats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.5rem,1.2vw,1rem)}
+.plats .ph{aspect-ratio:4/5}
+.plats .ph img{filter:saturate(.94) contrast(1.03)}
+.js .plats .ph.in:hover img{transform:scale(1.05)}
 
 
 /* ==========================================================================
@@ -256,25 +255,25 @@ figcaption{margin-top:.85rem;opacity:.75}
 .lac-over .wrap{display:grid;gap:1rem}
 .lac-over .display{max-width:16ch}
 /* ==========================================================================
-   IV. LES HÔTES
+   III. LA CARTE (menus, groupes, salles)
    ========================================================================== */
-/* ==========================================================================
-   V. LA TABLE (services, carte, groupes)
-   ========================================================================== */
-.table-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,7vw,8rem)}
-.table-intro{display:grid;gap:2rem;align-content:start;position:sticky;top:7rem}
-.table-intro .body-copy{color:var(--on-paper-dim)}
-.carte{display:grid;gap:0}
-.carte-row{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:1rem;padding-block:1.6rem;border-bottom:1px solid var(--hair-paper)}
-.carte-row:first-child{border-top:1px solid var(--on-paper)}
-.carte-row .k{font-family:var(--f-display);font-size:var(--t-lg);line-height:1.1}
-.carte-row .k em{font-size:.6em;display:block;margin-top:.35rem;color:var(--on-paper-dim)}
-.carte-row .dots{border-bottom:1px dotted var(--hair-paper);transform:translateY(-.3em)}
-.carte-row .val{text-align:right;font-variant-numeric:tabular-nums;display:grid;gap:.1rem}
-.carte-row .val .label{color:var(--on-paper-dim)}
-.carte-row.closed .k,.carte-row.closed .val{color:var(--on-paper-dim)}
-.offers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gut);margin-top:clamp(2rem,4vw,3rem)}
-.galerie{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.5rem,1.2vw,1rem);margin-top:clamp(3rem,6vw,5rem);padding-bottom:clamp(.75rem,2vw,1.75rem)}
+.carte-head{display:grid;gap:1.25rem;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.carte-head .caption{margin:0;color:var(--on-paper-dim)}
+.menus{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(2.5rem,7vw,8rem);align-items:start}
+.menu-top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding-bottom:1.1rem;border-bottom:1px solid var(--on-paper)}
+.menu-top h3{margin:0;font-family:var(--f-display);font-weight:400;font-size:var(--t-lg);line-height:1.1}
+.menu-price{font-family:var(--f-display);font-style:italic;font-size:var(--t-lg);line-height:1.1;color:var(--orange);white-space:nowrap}
+.course{display:grid;grid-template-columns:6rem minmax(0,1fr);gap:1rem;padding-block:1.75rem;border-bottom:1px solid var(--hair-paper)}
+.course > .label{color:var(--on-paper-dim);padding-top:.5rem}
+.course ul{list-style:none;margin:0;padding:0;display:grid;gap:1rem}
+.course li{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:1.5rem;align-items:baseline}
+/* Le « ou » de la carte papier, entre deux propositions d'un même service */
+.course li + li::before{content:"ou";grid-column:1 / -1;margin-bottom:.85rem;font-family:var(--f-display);font-style:italic;line-height:1;color:var(--orange)}
+.dish{font-family:var(--f-display);font-size:1.3125rem;line-height:1.25;text-wrap:balance}
+.dish small{display:block;margin-top:.35rem;font-family:var(--f-text);font-size:var(--t-sm);line-height:1.5;color:var(--on-paper-dim);text-wrap:pretty}
+.course .p{font-family:var(--f-display);font-style:italic;font-variant-numeric:tabular-nums;color:var(--on-paper-dim);white-space:nowrap}
+.offers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gut);margin-top:clamp(3rem,6vw,5rem)}
+.galerie{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.5rem,1.2vw,1rem);margin-top:clamp(2rem,4vw,3rem);padding-bottom:clamp(.75rem,2vw,1.75rem)}
 .galerie .ph{aspect-ratio:4/3}
 .galerie .ph:nth-child(even){transform:translateY(clamp(.75rem,2vw,1.75rem))}
 .js .galerie .ph.in:hover img{transform:scale(1.06)}
@@ -294,16 +293,16 @@ figcaption{margin-top:.85rem;opacity:.75}
 .resa-note{margin:0;color:var(--on-ink-dim)}
 .resa-phone .row{display:flex;flex-wrap:wrap;gap:1.5rem 2rem;align-items:center}
 .resa-call{display:none}
-.copied{color:var(--lotus)}
+.copied{color:var(--orange)}
 .infos{display:grid;gap:0;border-top:1px solid var(--hair-ink)}
 .info{display:grid;grid-template-columns:7rem 1fr;gap:1rem;padding-block:1.15rem;border-bottom:1px solid var(--hair-ink)}
 .info .label{color:var(--on-ink-dim);padding-top:.25rem}
 .info p{margin:0}
 .info a{border-bottom:1px solid var(--hair-ink);transition:border-color .4s,color .4s}
-.info a:hover{color:var(--lotus);border-color:var(--lotus)}
+.info a:hover{color:var(--orange);border-color:var(--orange)}
 .hours{display:grid;grid-template-columns:auto 1fr;gap:.15rem 1.25rem;font-variant-numeric:tabular-nums}
 .hours .off{color:var(--on-ink-dim)}
-.hours .today{color:var(--lotus)}
+.hours .today{color:var(--orange)}
 
 /* ==========================================================================
    FOOTER
@@ -313,7 +312,7 @@ figcaption{margin-top:.85rem;opacity:.75}
 .foot-top .col{display:grid;gap:.9rem;align-content:start}
 .foot-top .label{color:var(--on-ink-dim)}
 .foot-top a{opacity:.85;transition:opacity .3s,color .3s;width:fit-content}
-.foot-top a:hover{opacity:1;color:var(--lotus)}
+.foot-top a:hover{opacity:1;color:var(--orange)}
 .foot-top .claim{font-family:var(--f-display);font-size:1.4rem;line-height:1.3;max-width:18rem}
 .foot-mark{position:relative;font-family:var(--f-display);font-size:clamp(4rem,14vw,13rem);line-height:.82;letter-spacing:-.035em;white-space:nowrap;text-align:center;margin:0}
 .foot-mark em{font-size:.32em;letter-spacing:-.01em;vertical-align:.95em;margin-right:.18em}
@@ -345,9 +344,7 @@ figcaption{margin-top:.85rem;opacity:.75}
   .maison-head{grid-column:1 / -1}
   .maison-a{grid-column:1 / span 8}
   .maison-b,.maison-sign{grid-column:9 / -1}
-  .maison-text{grid-column:1 / span 8}
-  .principles{grid-template-columns:1fr 1fr}
-  .principles .principle:last-child{grid-column:1 / -1}
+  .menus{grid-template-columns:1fr}
   .resa-grid{grid-template-columns:1fr;gap:4rem}
   .foot-top{grid-template-columns:1fr 1fr}
 }
@@ -386,26 +383,19 @@ figcaption{margin-top:.85rem;opacity:.75}
   .maison-b{grid-column:7 / -1;margin-top:-4.5rem;position:relative;z-index:2;box-shadow:0 0 0 .6rem var(--paper)}
   .maison-b figcaption{display:none}
   .maison-a figcaption{max-width:48%}
-  .maison-text{grid-column:1 / -1;margin-top:.5rem}
-  .maison-sign{grid-column:1 / -1;max-width:none;margin-top:0;gap:1.75rem}
+  .maison-sign{grid-column:1 / -1;max-width:none;margin-top:.5rem;gap:1.75rem}
 
   .cuisine-head{grid-template-columns:1fr;gap:1.5rem}
-  .principles{grid-template-columns:1fr;gap:0;padding-top:0}
-  .principles .principle:last-child{grid-column:auto}
-  .principle{padding-block:1.5rem;gap:.5rem}
-  .principle + .principle{border-top:1px solid var(--hair-ink)}
-  .principle:last-child{padding-bottom:0}
-  .principle p{max-width:none}
+  .plats{grid-template-columns:1fr 1fr}
 
   .lac-full{height:max(24rem,60svh)}
   .lac-full::after{background:linear-gradient(180deg,var(--ink) 0%,rgba(15,22,21,.1) 20%,rgba(15,22,21,.4) 46%,rgba(15,22,21,.92) 100%)}
   .lac-over{padding-bottom:2rem}
 
-  .table-grid{grid-template-columns:1fr}
-  .table-intro{position:static;gap:1.5rem}
-  .carte-row{grid-template-columns:1fr auto;padding-block:1.25rem}
-  .carte-row .dots{display:none}
-  .carte-row .val{white-space:nowrap}
+  .course{grid-template-columns:1fr;gap:.9rem;padding-block:1.5rem}
+  .course > .label{padding-top:0}
+  .course li{column-gap:1rem}
+  .dish{font-size:1.1875rem}
   .offers{grid-template-columns:1fr;gap:2rem}
   .galerie{grid-template-columns:1fr 1fr;padding-bottom:0}
   .galerie .ph:nth-child(even){transform:none}
@@ -427,6 +417,8 @@ figcaption{margin-top:.85rem;opacity:.75}
   .foot-top .label{margin-bottom:.4rem}
   .foot-top a{padding-block:.4rem}
   .foot-mark{font-size:30vw}
+  /* « Restaurant sur le » passe au-dessus : le nom complet tient dans la largeur */
+  .foot-mark em{display:block;font-size:.2em;line-height:1.3;margin:0 0 .25em}
   .foot-reflect{height:3.25rem}
   /* Dégagement pour la pastille de preview (à retirer avec elle) */
   .foot-bottom{padding-bottom:calc(4.75rem + env(safe-area-inset-bottom,0px))}
@@ -458,7 +450,7 @@ figcaption{margin-top:.85rem;opacity:.75}
 <!-- ===================== INTRO (≈1,3 s, une seule fois par session) ===================== -->
 <div class="intro" id="intro" aria-hidden="true">
   <div class="intro-mark">
-    <div class="intro-word">Sur le Lac</div>
+    <div class="intro-word">Restaurant sur le Lac</div>
     <div class="intro-line"></div>
     <div class="intro-sub label">Châlette-sur-Loing</div>
   </div>
@@ -467,12 +459,12 @@ figcaption{margin-top:.85rem;opacity:.75}
 <!-- ===================== NAVIGATION ===================== -->
 <header class="nav" id="nav">
   <div class="wrap nav-in">
-    <a href="#top" class="brand" aria-label="Sur le Lac, retour en haut"><em>Sur le</em>Lac</a>
+    <a href="#top" class="brand" aria-label="Restaurant sur le Lac, retour en haut"><em>Restaurant sur le</em>Lac</a>
     <nav aria-label="Navigation principale">
       <ul class="nav-links">
         <li><a href="#maison">La Maison</a></li>
         <li><a href="#cuisine">La Cuisine</a></li>
-        <li><a href="#table">La Table</a></li>
+        <li><a href="#carte">La Carte</a></li>
         <li><a href="#venir">Venir</a></li>
       </ul>
     </nav>
@@ -485,7 +477,7 @@ figcaption{margin-top:.85rem;opacity:.75}
   <ol>
     <li><a href="#maison"><span class="num">i.</span>La Maison</a></li>
     <li><a href="#cuisine"><span class="num">ii.</span>La Cuisine</a></li>
-    <li><a href="#table"><span class="num">iii.</span>La Table</a></li>
+    <li><a href="#carte"><span class="num">iii.</span>La Carte</a></li>
     <li><a href="#venir"><span class="num">iv.</span>Réserver</a></li>
   </ol>
   <div class="drawer-foot">
@@ -497,7 +489,7 @@ figcaption{margin-top:.85rem;opacity:.75}
 <main id="top">
 
 <!-- ===================== HERO ===================== -->
-<section class="hero" aria-label="Sur le Lac">
+<section class="hero" aria-label="Restaurant sur le Lac">
   <div class="hero-media" data-speed="0.18">
     <figure class="ph" data-fallback="Photographie — le lac au crépuscule">
       <img data-img="hero" alt="" fetchpriority="high" decoding="async" sizes="100vw">
@@ -513,7 +505,7 @@ figcaption{margin-top:.85rem;opacity:.75}
   <div class="hero-body">
     <div class="wrap">
       <h1 class="hero-title h-in" style="transition-delay:.15s">
-        <span class="small">Sur le</span><span class="big">Lac<span class="mirror" aria-hidden="true">Lac</span></span>
+        <span class="small">Restaurant sur le</span><span class="big">Lac<span class="mirror" aria-hidden="true">Lac</span></span>
       </h1>
       <div class="water" aria-hidden="true"></div>
       <div class="reflect" aria-hidden="true"></div>
@@ -537,7 +529,7 @@ figcaption{margin-top:.85rem;opacity:.75}
     <div class="maison-grid">
       <div class="maison-head rv">
         <h2 class="display">Une table posée <em>au bord du lac.</em></h2>
-        <p class="lede">Après douze années à l'Auberge de Conflans, Gaëlle et Suor Heng ont installé leur restaurant sur la rive du lac de Châlette.</p>
+        <p class="lede">Gaëlle et Suor Heng vous reçoivent face au lac de Châlette, à quelques minutes de Montargis.</p>
       </div>
 
       <figure class="maison-a">
@@ -554,9 +546,6 @@ figcaption{margin-top:.85rem;opacity:.75}
         <figcaption class="caption">Gaëlle et Suor Heng</figcaption>
       </figure>
 
-      <div class="body-copy maison-text rv">
-        <p>Un pavillon vitré à quelques minutes de Montargis : trois salles face au lac et une terrasse. On vient d'abord pour la vue, on revient pour l'assiette.</p>
-      </div>
       <div class="maison-sign rv" style="--d:.1s">
         <div><span class="who">Gaëlle</span><span class="caption role">La salle</span></div>
         <div><span class="who">Suor Heng</span><span class="caption role">La cuisine</span></div>
@@ -573,14 +562,17 @@ figcaption{margin-top:.85rem;opacity:.75}
     <div class="cuisine-head">
       <h2 class="display rv">Le produit, la saison, <em>le geste.</em></h2>
       <div class="body-copy rv" style="--d:.15s">
-        <p>Ici, tout est élaboré sur place à partir de produits bruts. <strong>Suor Heng est Maître Restaurateur</strong>, un titre d'État qui distingue les tables où la cuisine est réellement faite maison.</p>
+        <p>Tout est fait maison, avec les producteurs locaux. <strong>Suor Heng est Maître Restaurateur.</strong></p>
       </div>
     </div>
 
-    <div class="principles">
-      <div class="principle rv"><h3>Frais &amp; maison</h3><p>Fonds, sauces, desserts : préparés en cuisine, chaque jour, à partir de produits bruts.</p></div>
-      <div class="principle rv" style="--d:.1s"><h3>Le Gâtinais dans l'assiette</h3><p>Des producteurs des environs, une carte qui change avec leurs récoltes.</p></div>
-      <div class="principle rv" style="--d:.2s"><h3>Un accent lointain</h3><p>Quelques touches d'Asie du Sud-Est, posées avec retenue sur la tradition française.</p></div>
+    <div class="plats">
+      <div class="ph rv-img" data-fallback="Photographie — assiette"><img data-img="p1" alt="Saumon et agrumes, tuile au sésame noir" loading="lazy" decoding="async" sizes="(max-width:760px) 50vw, 33vw"></div>
+      <div class="ph rv-img" style="--d:.1s" data-fallback="Photographie — assiette"><img data-img="p2" alt="Crustacés, sauce corail et asperge verte" loading="lazy" decoding="async" sizes="(max-width:760px) 50vw, 33vw"></div>
+      <div class="ph rv-img" style="--d:.2s" data-fallback="Photographie — assiette"><img data-img="p3" alt="Dos de cabillaud rôti et légumes des producteurs locaux" loading="lazy" decoding="async" sizes="(max-width:760px) 50vw, 33vw"></div>
+      <div class="ph rv-img" data-fallback="Photographie — assiette"><img data-img="p4" alt="Pièce de bœuf, jus réduit et purée" loading="lazy" decoding="async" sizes="(max-width:760px) 50vw, 33vw"></div>
+      <div class="ph rv-img" style="--d:.1s" data-fallback="Photographie — assiette"><img data-img="p5" alt="Saumon mi-cuit, coulis d'herbes" loading="lazy" decoding="async" sizes="(max-width:760px) 50vw, 33vw"></div>
+      <div class="ph rv-img" style="--d:.2s" data-fallback="Photographie — dessert"><img data-img="p6" alt="Entremets aux fruits rouges" loading="lazy" decoding="async" sizes="(max-width:760px) 50vw, 33vw"></div>
     </div>
   </div>
 
@@ -602,30 +594,56 @@ figcaption{margin-top:.85rem;opacity:.75}
 
 </section>
 
-<!-- ===================== III. LA TABLE ===================== -->
-<section class="sec sec--paper" id="table">
+<!-- ===================== III. LA CARTE ===================== -->
+<section class="sec sec--paper" id="carte">
   <div class="wrap">
-    <div class="sec-head rv"><span class="num">iii.</span><span class="label">La Table</span></div>
-    <div class="table-grid">
-      <div class="table-intro">
-        <h2 class="display rv">Deux services, une carte <em>de saison.</em></h2>
-        <div class="body-copy rv" style="--d:.1s">
-          <p>La carte évolue au rythme des producteurs : poisson du jour, pièce de bœuf, desserts maison, et des propositions végétariennes. Elle est communiquée sur place et par téléphone.</p>
-        </div>
-        <a href="#venir" class="btn rv" style="--d:.2s;width:fit-content">Réserver <span class="arr" aria-hidden="true"></span></a>
-      </div>
+    <div class="sec-head rv"><span class="num">iii.</span><span class="label">La Carte</span></div>
+    <div class="carte-head rv">
+      <h2 class="display">Le menu <em>du moment.</em></h2>
+      <p class="caption">Du mardi au dimanche et jours fériés · à droite, le tarif à la carte</p>
+    </div>
 
-      <div>
-        <div class="carte">
-          <div class="carte-row rv"><span class="k">Déjeuner<em>Du mardi au dimanche</em></span><span class="dots"></span><span class="val"><span>12 h — 15 h</span></span></div>
-          <div class="carte-row rv"><span class="k">Dîner<em>Vendredi &amp; samedi</em></span><span class="dots"></span><span class="val"><span>19 h — 22 h 30</span></span></div>
-          <div class="carte-row closed rv"><span class="k">Lundi<em>Jour de repos</em></span><span class="dots"></span><span class="val"><span>Fermé</span></span></div>
+    <div class="menus">
+      <article class="menu rv" aria-labelledby="menu-52">
+        <header class="menu-top"><h3 id="menu-52">Le Menu</h3><span class="menu-price">52 €</span></header>
+        <div class="course"><span class="label">Entrée</span>
+          <ul>
+            <li><span class="dish">Médaillon de filet de sandre<small>Asperges, feuille de nori, sauce hollandaise au safran, noisettes torréfiées</small></span><span class="p">24 €</span></li>
+            <li><span class="dish">Méli-mélo de ris de veau croustillants et d'escalope de foie gras snackée<small>Crème de champignons</small></span><span class="p">24 €</span></li>
+          </ul>
         </div>
-        <div class="offers">
-          <div class="offer rv"><h3>Groupes &amp; séminaires</h3><p>Deux salles de réunion, banquets et séminaires, de 30 à 121 convives. Parking autocar à proximité.</p></div>
-          <div class="offer rv" style="--d:.1s"><h3>Traiteur &amp; à emporter</h3><p>La cuisine de la maison, à recevoir chez soi. Sur demande, par téléphone.</p></div>
+        <div class="course"><span class="label">Plat</span>
+          <ul>
+            <li><span class="dish">Cabillaud gravlax à la vapeur<small>Douceur d'ail et de persil, légumes des producteurs locaux</small></span><span class="p">35 €</span></li>
+            <li><span class="dish">Pavé de selle d'agneau mariné aux senteurs d'Asie<small>Jus aillé au cumin, légumes des producteurs locaux</small></span><span class="p">35 €</span></li>
+            <li><span class="dish">Filet de bœuf<small>Sauce poivre, pommes frites bio de Cortrat</small></span><span class="p">35 €</span></li>
+          </ul>
         </div>
-      </div>
+        <div class="course"><span class="label">Dessert</span>
+          <ul>
+            <li><span class="dish">Variation autour du chocolat noir<small>Crème glacée chocolat-romarin · crème liégeoise chocolat-whisky · tartelette chocolat, noisettes caramélisées</small></span><span class="p">15 €</span></li>
+            <li><span class="dish">Variation mangue, passion, coco<small>Panna cotta au combava · sorbet au citron kalamansi · entremets et crumble noisettes</small></span><span class="p">15 €</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="menu rv" style="--d:.15s" aria-labelledby="menu-34">
+        <header class="menu-top"><h3 id="menu-34">Le Menu végétarien</h3><span class="menu-price">34 €</span></header>
+        <div class="course"><span class="label">Entrée</span>
+          <ul><li><span class="dish">Asperges à la crème de persil<small>Croûtons aillés</small></span><span class="p">12 €</span></li></ul>
+        </div>
+        <div class="course"><span class="label">Plat</span>
+          <ul><li><span class="dish">Palette de légumes des producteurs locaux</span><span class="p">16 €</span></li></ul>
+        </div>
+        <div class="course"><span class="label">Dessert</span>
+          <ul><li><span class="dish">Crème liégeoise au chocolat et au whisky</span><span class="p">12 €</span></li></ul>
+        </div>
+      </article>
+    </div>
+
+    <div class="offers">
+      <div class="offer rv"><h3>Groupes &amp; séminaires</h3><p>De 30 à 121 convives.</p></div>
+      <div class="offer rv" style="--d:.1s"><h3>Traiteur &amp; à emporter</h3><p>Sur demande, par téléphone.</p></div>
     </div>
 
     <div class="galerie">
@@ -648,7 +666,7 @@ figcaption{margin-top:.85rem;opacity:.75}
       <div>
         <h2 class="display resa-title rv">Une table <em>face à l'eau.</em></h2>
         <div class="resa-phone rv" style="--d:.15s">
-          <p class="resa-note">Les réservations se prennent par téléphone.</p>
+          <p class="resa-note">Réservation par téléphone.</p>
           <a class="tel" href="tel:+33238947546" id="tel">02 38 94 75 46</a>
           <a class="btn resa-call" href="tel:+33238947546">Appeler le restaurant <span class="arr" aria-hidden="true"></span></a>
           <div class="row">
@@ -672,7 +690,7 @@ figcaption{margin-top:.85rem;opacity:.75}
           </div>
         </div>
         <div class="info"><span class="label">E-mail</span><p><a href="mailto:restaurantsurlelac@outlook.com">restaurantsurlelac@outlook.com</a></p></div>
-        <div class="info"><span class="label">Accès</span><p>Parc de loisirs du lac, parking à proximité. Salle climatisée et accessible en fauteuil roulant.</p></div>
+        <div class="info"><span class="label">Accès</span><p>Parking à proximité · salle climatisée · accès fauteuil roulant</p></div>
       </div>
     </div>
   </div>
@@ -685,17 +703,17 @@ figcaption{margin-top:.85rem;opacity:.75}
   <div class="wrap">
     <div class="foot-top">
       <div class="col"><p class="claim">Table française, faite maison, au bord du lac de Châlette.</p></div>
-      <div class="col"><span class="label">Visiter</span><a href="#maison">La Maison</a><a href="#cuisine">La Cuisine</a><a href="#table">La Table</a></div>
+      <div class="col"><span class="label">Visiter</span><a href="#maison">La Maison</a><a href="#cuisine">La Cuisine</a><a href="#carte">La Carte</a></div>
       <div class="col"><span class="label">Contact</span><a href="tel:+33238947546">02 38 94 75 46</a><span>3 rue du Gué aux Biches<br>45120 Châlette-sur-Loing</span></div>
       <div class="col"><span class="label">Suivre</span><a href="https://www.facebook.com/suoretgaelle/" target="_blank" rel="noopener">Facebook</a></div>
     </div>
-    <p class="foot-mark" aria-hidden="true"><em>Sur le</em>Lac</p>
+    <p class="foot-mark" aria-hidden="true"><em>Restaurant sur le</em>Lac</p>
   </div>
   <div class="foot-water"></div>
-  <div class="wrap foot-reflect" aria-hidden="true"><div class="foot-mark"><em>Sur le</em>Lac</div></div>
+  <div class="wrap foot-reflect" aria-hidden="true"><div class="foot-mark"><em>Restaurant sur le</em>Lac</div></div>
   <div class="wrap foot-bottom caption">
     <span>© <span id="year">2026</span> Restaurant sur le Lac · Châlette-sur-Loing</span>
-    <span>Preview de conception · Photographies : fiche Tourisme Loiret du restaurant</span>
+    <span>Preview de conception · Photographies : Tourisme Loiret, TripAdvisor</span>
   </div>
 </footer>
 
@@ -710,9 +728,10 @@ figcaption{margin-top:.85rem;opacity:.75}
     <li><strong>Étoile Michelin.</strong> <span>Aucune distinction Michelin ou Gault&amp;Millau trouvée. Le titre Maître Restaurateur est, lui, confirmé par la fiche Tourisme Loiret.</span></li>
     <li><strong>Téléphone.</strong> <span>02 38 94 75 46 (fiche Tourisme Loiret et Google). Un ancien annuaire indique 02 38 07 19 20.</span></li>
     <li><strong>Avis.</strong> <span>4,1/5 sur environ 700 avis Google, relevé via un agrégateur.</span></li>
-    <li><strong>Carte &amp; prix.</strong> <span>Aucun menu officiel publié.</span></li>
+    <li><strong>Carte &amp; prix.</strong> <span>Menu à 52 € et menu végétarien à 34 € repris de la carte photographiée en salle, fournie par le client. Date du cliché inconnue : plats et prix à confirmer.</span></li>
+    <li><strong>Horaires.</strong> <span>La carte indique « du mardi au dimanche, midi et soir, et jours fériés » ; le site n'annonce le dîner que le vendredi et le samedi. À trancher.</span></li>
     <li><strong>Réservation.</strong> <span>Pas de système en ligne trouvé : téléphone ou e-mail.</span></li>
-    <li><strong>Photos.</strong> <span>Toutes viennent de la fiche officielle Tourisme Loiret, en 1200 px de large au mieux. Le portrait du couple a été fourni par le client en 681 px : il est affiché en petit format, et son crédit photo reste à préciser. Aucune photo de plat n'a été trouvée.</span></li>
+    <li><strong>Photos.</strong> <span>Toutes viennent de la fiche officielle Tourisme Loiret, en 1200 px de large au mieux. Le portrait du couple a été fourni par le client en 681 px : il est affiché en petit format, et son crédit photo reste à préciser. Les six photos de plats viennent de la page TripAdvisor du restaurant : cinq sont des photos de clients, dont les droits restent à obtenir (ou à remplacer par des photos de la maison).</span></li>
   </ol>
 </aside>
 
@@ -736,6 +755,14 @@ const IMAGES = {
   g2:     { src: "https://cdt45.media.tourinsoft.eu/upload/restaurant-sur-le-lac-chalette-terrasse-vue-lac.jpg", note: "Terrasse, vue lac" },
   g3:     { src: "https://cdt45.media.tourinsoft.eu/upload/restaurant-sur-le-lac-chalette-salle.jpg", note: "Salle" },
   g4:     { src: "https://cdt45.media.tourinsoft.eu/upload/restaurant-sur-le-lac-chalette-salle-groupe-vue-lac.jpg", note: "Salle groupes, vue lac" },
+  /* Plats : page TripAdvisor du restaurant, copiés en local (1200 px).
+     p6 est une photo de la maison ; p1 à p5 sont des photos de clients, droits à obtenir. */
+  p1:     { src: "assets/img/plats/saumon-agrumes.jpg", note: "Saumon et agrumes — photo client TripAdvisor" },
+  p2:     { src: "assets/img/plats/crustaces.jpg", note: "Crustacés — photo client TripAdvisor" },
+  p3:     { src: "assets/img/plats/cabillaud.jpg", note: "Dos de cabillaud rôti — photo client TripAdvisor" },
+  p4:     { src: "assets/img/plats/boeuf.jpg", note: "Pièce de bœuf — photo client TripAdvisor" },
+  p5:     { src: "assets/img/plats/saumon-mi-cuit.jpg", note: "Saumon mi-cuit — photo client TripAdvisor" },
+  p6:     { src: "assets/img/plats/entremet-fruits-rouges.jpg", note: "Entremets aux fruits rouges — photo de la maison sur TripAdvisor" },
   resa:   { src: "https://cdt45.media.tourinsoft.eu/upload/restaurant-sur-le-lac-chalette-terrasse-parasols-vue-lac.jpg", note: "Terrasse, parasols, vue lac" }
 };
 
@@ -788,7 +815,7 @@ const IMAGES = {
   const secIO = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) links.forEach(a => a.classList.toggle('is-active', a.hash === '#' + e.target.id));
   }), { rootMargin: '-45% 0px -50% 0px' });
-  ['maison','cuisine','lac','table','venir'].forEach(id => { const s = document.getElementById(id); s && secIO.observe(s); });
+  ['maison','cuisine','lac','carte','venir'].forEach(id => { const s = document.getElementById(id); s && secIO.observe(s); });
 
   /* ---- Menu mobile ---- */
   const toggle = document.getElementById('navToggle'), drawer = document.getElementById('drawer');
