@@ -18,8 +18,9 @@ Site d'une page pour le restaurant de Gaëlle et Suor Heng, à Châlette-sur-Loi
 ## Direction artistique « Eau dormante »
 
 - Alternance de sections sombres (`--ink`, le lac de nuit) et claires (`.sec--paper`, le lin).
-- Typographie : Newsreader (titres, italiques, prix) et Hanken Grotesk (texte, labels en capitales espacées).
-- Un seul accent, `--orange` : `#D4894F` sur fond sombre, redéfini en `#A8551F` dans `.sec--paper` pour rester lisible. Il sert aux numéros de section, aux prix des menus, aux « ou » de la carte, au jour courant des horaires et aux survols. Ne pas ajouter d'autre couleur d'accent.
+- Typographie : Cormorant (titres, italiques, prix) et Hanken Grotesk (texte, labels en capitales espacées).
+- Logo : le cygne de la carte de visite, redessiné en traits dans `<symbol id="logo">` (début du `<body>`) et appelé par `<use href="#logo">` (nav, intro, footer). Couleur : `currentColor`, toujours en orange. Copie autonome dans `assets/img/logo.svg`, qui sert aussi de favicon.
+- Un seul accent, `--orange` : `#D4894F` sur fond sombre, redéfini en `#A8551F` dans `.sec--paper` pour rester lisible. Il sert au logo, aux numéros de section, aux prix des menus, aux « ou » de la carte, au jour courant des horaires et aux survols. Ne pas ajouter d'autre couleur d'accent.
 - Titres de section : `h2.display`, la fin en italique (`<em>`) qui ne se coupe pas.
 - Animations : classes `.rv` (texte), `.rv-img` (image), révélées au scroll. Respecter `prefers-reduced-motion`.
 - Mobile : chaque section a sa composition dédiée dans `@media (max-width:760px)`. Vérifier à 390 px après tout changement de mise en page.
